@@ -1,0 +1,2 @@
+docker build -t appium_parallel .
+docker run --rm -p 5000:5000 appium_parallel

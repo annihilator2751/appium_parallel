@@ -1,0 +1,6 @@
+KEY_IP = 'ip'
+KEY_PORT = 'port'
+KEY_MSIZE = 'msize'
+KEY_KNOWN_SERVER_HOSTS = 'known_hosts'
+KEY_MAX_CONN = 'max_conn'
+KEY_APP = 'app'

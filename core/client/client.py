@@ -1,28 +1,20 @@
-import socket
+from core.const import KEY_APP
+from core.network.client_socket import ClientSocket
+from core.utils import Entity
 
 
-class TestClient:
-    def __init__(self, ip='localhost', port=0):
-        self.ip = ip
-        self.port = port
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socket.bind(self.host)
-        self.ip, self.port = self.socket.getsockname()
-        self.socket.connect(('localhost', 5000))
+class Client(Entity):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.socket = ClientSocket(**kwargs, **{KEY_APP: self})
 
     def send(self, msg):
-        self.socket.send(msg.encode())
-        ans = self.socket.recv(1024).decode()
-        print(f'ans: {ans}')
-
-    def __del__(self):
-        self.socket.send('disconnect'.encode())
-
-    @property
-    def host(self):
-        return self.ip, self.port
+        return self.socket.send(msg)
 
 
 if __name__ == '__main__':
-    server = TestClient()
-    server.send('blabla')
+    from config import SERVER_HOSTS
+    from core.const import KEY_KNOWN_SERVER_HOSTS
+
+    server = Client(**{KEY_KNOWN_SERVER_HOSTS: SERVER_HOSTS})
+    server.send('lorem ipsum')

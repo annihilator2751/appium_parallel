@@ -1,5 +1,5 @@
-from core.server.server import TestServer
+from core.server.server import Server
 
 if __name__ == '__main__':
-    server = TestServer()
+    server = Server()
     server.run()

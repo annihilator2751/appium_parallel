@@ -1,1 +1,0 @@
--e git+ssh://git@annihilator.github.com/annihilator2751/appium_parallel.git@5c9deb8fe5357b9c8516e8d74217bc4f767167a8#egg=appium_parallel
